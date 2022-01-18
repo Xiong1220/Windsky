@@ -1,0 +1,51 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{% url 'center:center_center_home_view' %}" class="brand-link">
+        <img src="{% static 'images/data-logo.jpeg' %}" alt="AdminLTE Logo"
+             class="brand-image img-circle elevation-3 border"
+             style="opacity: .8">
+        <span class="brand-text font-weight-light"><b>Peekpa</b>数据中心</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+                {% url 'center:center_center_home_view' as cms_home_page %}
+                <li class="nav-item">
+                    <a href="{{ cms_home_page }}" class="nav-link {% if request.path == cms_home_page %}active{% endif %}">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Home
+                        </p>
+                    </a>
+                </li>
+                {% url 'center:jpearth_list_view' as jpearth_manage_view %}
+                <li class="nav-item has-treeview {% if request.path == jpearth_manage_view %}menu-open{% endif %}">
+                    <a href="{{ jpearth_manage_view }}" class="nav-link {% if request.path == jpearth_manage_view %}active{% endif %}">
+                      <i class="nav-icon far fa-copy"></i>
+                      <p>
+                        日本地震信息
+                        <i class="right fas fa-angle-left"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{{ jpearth_manage_view }}" class="nav-link {% if request.path == jpearth_manage_view %}active{% endif %}">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>MongoDB 数据源</p>
+                        </a>
+                      </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
